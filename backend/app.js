@@ -6,8 +6,19 @@ import { triggerWebhook } from "./services/webhook.service.js";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Job Scheduler Backend is running 🚀");
+});
+
 
 app.post("/jobs", async (req, res) => {
   try {
