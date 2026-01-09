@@ -76,8 +76,8 @@ app.delete("/jobs/:id", async (req, res) => {
 });
 
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () =>
-  console.log("Backend running on port", PORT)
-);
+app.listen(PORT, () => {
+  console.log("Backend running on port", PORT);
+});
